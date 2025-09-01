@@ -78,7 +78,7 @@ const Login = () => {
                             <div className="form-control">
 
                                 <label className="label">Email</label>
-                                <input type="email" name="email" className="input" placeholder="Email" />
+                                <input type="email" name="email" className="input" placeholder="Email" required />
 
                                 <label className="label">Password</label>
                                 <input type="password" name="password" className="input" placeholder="Password" />

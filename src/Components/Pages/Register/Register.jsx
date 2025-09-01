@@ -22,7 +22,6 @@ const Register = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.PhotoURL)
                     .then(() => {
-
                         // create user inside database 
                         const userInfo = {
                             name: data.name,
@@ -41,9 +40,13 @@ const Register = () => {
                                     navigate('')
                                 }
                             })
-
                     })
                     .catch((error) => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${error} has been occour`,
+                        });
                         console.log(error);
                     })
             })
@@ -126,7 +129,7 @@ const Register = () => {
 
                         </form>
                         <div className="text-center pb-2">
-                            <p>Already have an Account ? <Link to='/login'><span className="text-lg font-semibold text-primary">Login First</span></Link></p>
+                            <p>Already have an Account?Please <Link to='/login'><span className="text-lg font-semibold text-primary">Login </span></Link></p>
                         </div>
                         <hr />
                         <div className='mx-auto text-center py-4'>

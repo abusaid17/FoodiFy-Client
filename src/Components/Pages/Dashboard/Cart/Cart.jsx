@@ -42,8 +42,8 @@ const Cart = () => {
 
             {/* Orders Summary */}
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-                <h2 className="text-xl font-bold">TOTAL ORDERS: {cart.length}</h2>
-                <h2 className="text-xl font-bold">TOTAL PRICE: ${totalPrice.toFixed(2)}</h2>
+                <h2 className="text-xl font-bold">TOTAL ORDERS : <span className="text-orange-700 font-bold"> {cart.length}</span></h2>
+                <h2 className="text-xl font-bold">TOTAL PRICE : <span className="text-orange-700 font-bold"> ${totalPrice.toFixed(2)}</span></h2>
                 <button className="bg-yellow-700 text-white px-4 py-2 rounded-lg">PAY</button>
             </div>
 
@@ -64,8 +64,8 @@ const Cart = () => {
                             <tr key={item._id} className="border-b">
                                 <td className="px-4 py-3">{index + 1}</td>
                                 <td className="px-4 py-3">
-                                    <div className="w-24 h-16 bg-gray-300 rounded">
-                                        <img src={item.image} alt="" />
+                                    <div className="w-24 h-16 bg-gray-300 ">
+                                        <img src={item.image} alt="No Image" />
                                     </div>
                                 </td>
                                 <td className="px-4 py-3">{item.name}</td>
@@ -73,7 +73,7 @@ const Cart = () => {
                                 <td className="px-4 py-3">
                                     <button
                                         onClick={() => handleDelete(item._id)}
-                                        className="bg-red-600 hover:bg-sky-400 text-white p-2 rounded"
+                                        className="btn bg-red-600 hover:bg-sky-400 text-white px-3 btn-lg"
                                     >
                                         <FaTrashAlt />
                                     </button>

@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import app from "../firebase/firebase.config";
-// import usePublicAxios from "../Hooks/usePublicAxios";
+import usePublicAxios from "../Hooks/usePublicAxios";
 
 export const AuthContext = createContext(null);
 
@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
 
     // handle JWT
-    // const publicAxios = usePublicAxios();
+    const publicAxios = usePublicAxios();
 
     // Create new user
     const createUser = (email, password) => {
@@ -52,21 +52,19 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            // if (currentUser) {
-            //     const userInfo = {
-            //         email: currentUser.email,
-            //     }
-            //     publicAxios.post('/jwt', userInfo)
-            //         .then(res => {
-            //             if (res.data.token) {
-            //                 localStorage.setItem('Access Token : ', res.data.token);
-            //             }
-            //         })
-
-            // } else {
-            //     localStorage.removeItem('Access Token')
-
-            // }
+            if (currentUser) {
+                // get token and store client
+                const userInfo = { email: currentUser.email };
+                publicAxios.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem("accessToken", res.data.token);
+                            console.log("Access Token saved:", res.data.token);
+                        }
+                    })
+            } else {
+                localStorage.removeItem('accessToken'); // ✅ same key
+            }
             setLoading(false);
         });
         return () => unsubscribe();

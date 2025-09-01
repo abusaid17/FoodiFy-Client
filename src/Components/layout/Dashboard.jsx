@@ -7,11 +7,12 @@ import { AiFillHome } from "react-icons/ai";
 import { IoMdMail } from "react-icons/io";
 import useCarts from "../../Hooks/useCarts";
 import { MdFoodBank } from "react-icons/md";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
     const [csrt] = useCarts();
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
 
 

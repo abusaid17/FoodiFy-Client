@@ -1,5 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainLayout from "../Components/layout/MainLayout";
+import { createBrowserRouter } from "react-router-dom";
+import MainLayout from "../Components/layout/MainLayout.jsx";
 import Menu from "../Components/Pages/Menu/Menu/Menu.jsx";
 import Home from "../Components/Pages/Home/Home/Home.jsx";
 import OrderFood from "../Components/Pages/OrderFood/OrderFood/OrderFood.jsx";

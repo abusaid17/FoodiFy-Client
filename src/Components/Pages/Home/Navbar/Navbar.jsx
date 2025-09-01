@@ -68,11 +68,11 @@ const Navbar = () => {
                         </div></Link>
                     {user ? (
                         <>
-                            <div className="avatar avatar-placeholder">
+                            {/* <div className="avatar avatar-placeholder">
                                 <div className="bg-neutral text-neutral-content w-12 rounded-full">
                                     <span className="text-center">{user.displayName}</span>
                                 </div>
-                            </div>
+                            </div> */}
                             <button onClick={handleLogOut} className="btn btn-error text-lg">Log Out</button>
                         </>
                     ) : (

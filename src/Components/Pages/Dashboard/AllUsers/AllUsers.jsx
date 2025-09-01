@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { FaEdit, FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
+
     // Tanstack Queary
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
+            const token = localStorage.getItem('accessToken'); // ✅ correct key
             const res = await axiosSecure.get('/users');
             return res.data;
         }
@@ -31,7 +33,6 @@ const AllUsers = () => {
                 }
             })
     }
-
 
     // Handle delete users
     const handleDeleteUser = user => {
