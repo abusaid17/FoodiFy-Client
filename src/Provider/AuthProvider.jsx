@@ -59,13 +59,15 @@ const AuthProvider = ({ children }) => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem("accessToken", res.data.token);
-                            console.log("Access Token saved:", res.data.token);
+                            // console.log("Access Token saved:", res.data.token);
+                            setLoading(false);
+
                         }
                     })
             } else {
                 localStorage.removeItem('accessToken'); // ✅ same key
+                setLoading(false);
             }
-            setLoading(false);
         });
         return () => unsubscribe();
     }, []);

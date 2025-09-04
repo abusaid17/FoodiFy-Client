@@ -10,10 +10,9 @@ import { MdFoodBank } from "react-icons/md";
 import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
-    // const [csrt] = useCarts();
+    const [cart, refetch] = useCarts();
     const [isAdmin, isAdminLoading] = useAdmin();
     // if (isAdminLoading) return <progress className="progress w-56"></progress>;
-
 
     const dashBoardOptions = (
         <>
@@ -29,13 +28,13 @@ const Dashboard = () => {
                 <>
                     <NavLink to="/dashboard/userHome"><li className="flex gap-2 items-center"><FaHome /> User Home</li></NavLink>
                     <NavLink to="/dashboard/reservation"><li className="flex gap-2 items-center"><FaCalendar /> Reservation</li></NavLink>
-                    <NavLink to="/dashboard/payment"><li className="flex gap-2 items-center"><RiSecurePaymentLine /> Payment History</li></NavLink>
+                    <NavLink to="/dashboard/paymentHistory"><li className="flex gap-2 items-center"><RiSecurePaymentLine /> Payment History</li></NavLink>
                     <NavLink to="/dashboard/mycart">
                         <li className="flex gap-2 items-center">
                             <FaCartPlus /> My Cart
-                            {/* <span className="ml-2 bg-red-600 px-2 py-0.5 rounded-full text-sm">
+                            <span className="ml-2 bg-pink-600 font-semibold px-2 p-1 rounded-full text-sm">
                                 {cart?.length || 0}
-                            </span> */}
+                            </span>
                         </li>
                     </NavLink>
                     <NavLink to="/dashboard/review"><li className="flex gap-2 items-center"><MdReviews /> Add Review</li></NavLink>

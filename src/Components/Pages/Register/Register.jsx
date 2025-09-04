@@ -37,7 +37,7 @@ const Register = () => {
                                         icon: "success",
                                         draggable: true
                                     });
-                                    navigate('')
+                                    navigate('/login')
                                 }
                             })
                     })
@@ -123,18 +123,15 @@ const Register = () => {
                                 {errors.password?.type === 'minLength' && <span className=" text-blue-600">Password must be at least 6 charecter</span>}
                                 {errors.password?.type === 'pattern' && <span className=" text-blue-600">Use at least one Uppercase One Lowercase and One Speatial Charecter</span>}
                             </div>
-
                             <input className="btn text-white text-lg bg-amber-500 mt-4 w-[97%]" type="submit" value="Register" />
-
-
                         </form>
                         <div className="text-center pb-2">
                             <p>Already have an Account?Please <Link to='/login'><span className="text-lg font-semibold text-primary">Login </span></Link></p>
                         </div>
-                        <hr />
+                        {/* <hr />
                         <div className='mx-auto text-center py-4'>
                             <SocialLogin></SocialLogin>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

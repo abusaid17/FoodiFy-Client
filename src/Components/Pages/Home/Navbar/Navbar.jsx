@@ -1,13 +1,13 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router";
-import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
 import useCarts from "../../../../Hooks/useCarts";
+import useAuth from "../../../../Hooks/useAuth";
+import useAdmin from "../../../../Hooks/useAdmin";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
-
+    const { user, logOut } = useAuth();
+    const [isAdmin] = useAdmin();
     // load cart data from backend and load from useCart Hooks
     const [cart, isLoading] = useCarts()
 
@@ -16,7 +16,7 @@ const Navbar = () => {
             .then(() => {
                 Swal.fire({
                     title: "Log Out Successfully",
-                    icon: "error",
+                    icon: "success",
                     draggable: true
                 });
             })
@@ -29,7 +29,14 @@ const Navbar = () => {
         <li className="text-lg font-semibold"><NavLink to="/">Home</NavLink></li>
         <li className="text-lg font-semibold"><NavLink to="/menu">Our Menu</NavLink></li>
         <li className="text-lg font-semibold"><NavLink to="/orderfood/salad">Order Food</NavLink></li>
-        <li className="text-lg font-semibold"><NavLink to="/secret">Secret</NavLink></li>
+        {
+            user && isAdmin &&
+            <li className="text-lg font-semibold"><NavLink to="/dashboard/adminHome">Dashboard</NavLink></li>
+        }
+        {
+            user && !isAdmin &&
+            <li className="text-lg font-semibold"><NavLink to="/dashboard/userHome">Dashboard</NavLink></li>
+        }
     </>
     return (
         <div className="fixed top-0 left-0 w-full z-50">
